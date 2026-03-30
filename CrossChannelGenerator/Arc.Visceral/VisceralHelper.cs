@@ -16,6 +16,28 @@ namespace Arc.Visceral;
 
 internal static class VisceralHelper
 {
+    public static string RefKindToString(RefKind refKind) => refKind switch
+    {
+        RefKind.None => string.Empty,
+        RefKind.Ref => "ref",
+        RefKind.Out => "out",
+        RefKind.In => "in",
+        // RefKind.RefReadOnly => "ref readonly",
+        RefKind.RefReadOnlyParameter => "ref readonly",
+        _ => string.Empty,
+    };
+
+    public static string RefKindToStringWithSpace(RefKind refKind) => refKind switch
+    {
+        RefKind.None => string.Empty,
+        RefKind.Ref => "ref ",
+        RefKind.Out => "out ",
+        RefKind.In => "in ",
+        // RefKind.RefReadOnly => "ref readonly ",
+        RefKind.RefReadOnlyParameter => "ref readonly ",
+        _ => string.Empty,
+    };
+
     public static string RemoveWhitespace(this string input)
         => new string(input.ToCharArray().Where(c => !char.IsWhiteSpace(c)).ToArray());
 
